@@ -3,9 +3,13 @@
 namespace App\Http\Livewire\Auth;
 
 use Livewire\Component;
+use Lukeraymonddowning\Honey\Facades\Honey;
+use Lukeraymonddowning\Honey\Traits\WithRecaptcha;
 
 class RegisterForm extends Component
 {
+    use WithRecaptcha;
+
     public string $username = '';
     public string $email = '';
     public string $password = '';
@@ -32,11 +36,13 @@ class RegisterForm extends Component
     {
         $this->validate();
 
-//        $token = $this->recaptchaToken();
-//        $response = Honey::recaptcha()->checkToken($token);
+        $token = $this->recaptchaToken();
+        $response = Honey::recaptcha()->checkToken($token);
 
 
-        $this->submitMessage = 'Ok';
+        $this->submitMessage = str_replace(',"', ', "', collect($response)->toJson());
+
+        // TODO: Check the recaptcha response and create a new user
     }
     public function render()
     {
