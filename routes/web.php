@@ -6,4 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', App\Http\Livewire\Auth\RegisterForm::class);
+Route::group(['middleware' => 'language'], function () {
+    Route::get('/register', App\Http\Livewire\Auth\RegisterForm::class);
+});
+

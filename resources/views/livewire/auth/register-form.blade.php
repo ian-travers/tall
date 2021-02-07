@@ -1,3 +1,8 @@
-<div>
+<x-auth.card>
+    <x-slot name="logo">
+        <x-auth.logo/>
+    </x-slot>
+
     Register
-</div>
+
+</x-auth.card>
