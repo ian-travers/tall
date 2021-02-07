@@ -1,3 +1,9 @@
 {
-    "Register": "Регистрация"
+    "Already registered?": "Есть аккаунт?",
+    "Create your account": "Создание аккаунта",
+    "Email": "Email",
+    "Join NFSU Cup": "Присоединяйтесь к NFSU Cup",
+    "Password": "Пароль",
+    "Register": "Регистрация",
+    "Username": "Имя пользователя"
 }
