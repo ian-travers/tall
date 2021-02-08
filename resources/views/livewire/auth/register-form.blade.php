@@ -76,6 +76,6 @@
             </x-button>
         </div>
 
-        <x-honey-recaptcha/>
+{{--        <x-honey-recaptcha/>--}}
     </form>
 </x-auth.card>

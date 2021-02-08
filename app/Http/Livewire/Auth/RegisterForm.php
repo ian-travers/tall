@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\User;
+use Hash;
 use Livewire\Component;
 use Lukeraymonddowning\Honey\Facades\Honey;
 use Lukeraymonddowning\Honey\Traits\WithRecaptcha;
@@ -35,15 +37,22 @@ class RegisterForm extends Component
     public function submitForm()
     {
         $this->validate();
-
-        $token = $this->recaptchaToken();
-        $response = Honey::recaptcha()->checkToken($token);
-
-
-        $this->submitMessage = str_replace(',"', ', "', collect($response)->toJson());
-
         // TODO: Check the recaptcha response and create a new user
+
+        //        $token = $this->recaptchaToken();
+        //        $response = Honey::recaptcha()->checkToken($token);
+        //        $this->submitMessage = str_replace(',"', ', "', collect($response)->toJson());
+
+//        dd($this->username, $this->email, $this->password);
+        User::create([
+            'username' => $this->username,
+            'email' => $this->email,
+            'password' => Hash::make($this->password),
+        ]);
+
+        $this->submitMessage = 'OK';
     }
+
     public function render()
     {
         return view('livewire.auth.register-form')
