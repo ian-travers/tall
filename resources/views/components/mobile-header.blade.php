@@ -11,7 +11,7 @@
         </div>
         <x-mobile-nav-link route="server.monitor">{{ __('Monitor') }}</x-mobile-nav-link>
         <x-mobile-nav-link route="server.monitor">{{ __('Best Performers') }}</x-mobile-nav-link>
-        <x-mobile-nav-link route="server.monitor">{{ __('Rating') }}</x-mobile-nav-link>
+        <x-mobile-nav-link route="server.monitor">{{ __('Ratings') }}</x-mobile-nav-link>
 
     </div>
     <div class="pt-4 pb-3 border-t border-gray-700">
