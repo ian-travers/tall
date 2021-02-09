@@ -37,7 +37,7 @@ class RegisterForm extends Component
     public function submitForm()
     {
         $this->validate();
-        // TODO: Check the recaptcha response and create a new user
+        // TODO: Check the recaptcha response and create a new user when getting online
 
         //        $token = $this->recaptchaToken();
         //        $response = Honey::recaptcha()->checkToken($token);
