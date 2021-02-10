@@ -10,7 +10,7 @@ class LoginForm extends Component
 
     public string $username = '';
     public string $password = '';
-    public string $remember = '0';
+    public bool $remember = false;
 
     public string $message = '';
 
@@ -29,11 +29,16 @@ class LoginForm extends Component
         $this->validateOnly('password');
     }
 
+    public function toggleRemember()
+    {
+        $this->remember = !$this->remember;
+    }
+
     public function submitForm()
     {
         $credentials = $this->validate();
 
-        if (auth()->attempt($credentials)) {
+        if (auth()->attempt($credentials, $this->remember)) {
             session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
