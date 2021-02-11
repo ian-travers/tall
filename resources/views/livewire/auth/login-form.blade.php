@@ -6,6 +6,12 @@
     <p class="text-sm text-gray-400 text-center tracking-widest">{{ __("Entering to NFSU Cup") }}</p>
     <p class="text-3xl text-center my-1">{{ __('Account login') }}</p>
 
+    @if (session('status'))
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <form wire:submit.prevent="submitForm" class="mt-3">
         <div class="relative">
             <x-label for="username" value="{{ __('Username') }}"/>
@@ -91,7 +97,7 @@
         <div class="flex items-center justify-end mt-4">
             <a
                 class="underline text-sm text-gray-600 hover:text-gray-900"
-                href="#"
+                href="{{ route('password.request') }}"
             >
                 {{ __('Forgot your password?') }}
             </a>
