@@ -7,7 +7,10 @@ Route::group(['middleware' => 'language'], function () {
         return view('welcome');
     })->name('root');
 
-    Route::get('/register', App\Http\Livewire\Auth\RegisterForm::class)->name('register');
+    // Auth
+    Route::get('/register', App\Http\Livewire\Auth\RegisterForm::class)
+        ->middleware('guest')
+        ->name('register');
 
     Route::get('/login', App\Http\Livewire\Auth\LoginForm::class)
         ->middleware(['guest'])
@@ -23,8 +26,17 @@ Route::group(['middleware' => 'language'], function () {
     Route::post('/forgot-password', [App\Http\Controllers\Auth\PasswordResetController::class, 'store'])
         ->middleware(['guest'])
         ->name('password.email');
-    Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\NewPasswordController::class, 'create'])->middleware('guest')->name('password.reset');
-    Route::post('/reset-password', [App\Http\Controllers\Auth\NewPasswordController::class, 'store'])->middleware('guest')->name('password.update');
+    Route::get('/reset-password/{token}', [App\Http\Controllers\Auth\NewPasswordController::class, 'create'])
+        ->middleware('guest')
+        ->name('password.reset');
+    Route::post('/reset-password', [App\Http\Controllers\Auth\NewPasswordController::class, 'store'])
+        ->middleware('guest')
+        ->name('password.update');
+
+    // User settings
+    Route::get('/settings/profile', App\Http\Livewire\User\ProfileForm::class)
+        ->middleware(['auth'])
+        ->name('settings.profile');
 
     Route::get('/tourneys', function () {
         return view('welcome');

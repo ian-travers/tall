@@ -55,7 +55,7 @@
                                     >
                                 </button>
                             </x-slot>
-                            <x-dropdown-link href="#">{{ __('Settings') }}</x-dropdown-link>
+                            <x-dropdown-link href="{{ route('settings.profile') }}">{{ __('Settings') }}</x-dropdown-link>
                             <form method="post" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link

@@ -19,7 +19,7 @@ class RegisterForm extends Component
     public string $submitMessage = '';
 
     protected array $rules = [
-        'username' => 'required|min:3|max:15|regex:/^[A-Za-z0-9_]+$/|unique:users|',
+        'username' => 'required|min:3|max:15|regex:/^[A-Za-z0-9_]+$/|unique:users',
         'email' => 'required|email:filter|unique:users',
         'password' => 'required|min:8|regex:/^\S*$/u',
     ];

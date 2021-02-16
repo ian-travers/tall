@@ -18,5 +18,9 @@
         "lodash": "^4.17.19",
         "postcss": "^8.2.4",
         "tailwindcss": "^2.0.2"
+    },
+    "dependencies": {
+        "i18n-iso-countries": "^6.5.0",
+        "world-flags-sprite": "0.0.2"
     }
 }
