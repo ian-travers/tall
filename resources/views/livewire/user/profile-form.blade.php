@@ -16,6 +16,18 @@
                 <x-checking-input-spinner input="username"/>
             </div>
             @error('username')<p class="text-red-500 mt-1 text-xs">{{ $message }}</p>@enderror
+            <div class="relative mt-4">
+                <x-label for="email" value="{{ __('Email') }}"/>
+                <x-input
+                    wire:model.lazy="email"
+                    class="block mt-1 w-full"
+                    type="email" name="email"
+                    :value="old('email')"
+                    required autocomplete="email"
+                />
+                <x-checking-input-spinner input="email"/>
+            </div>
+            @error('email')<p class="text-red-500 mt-1 text-xs">{{ $message }}</p>@enderror
         </x-slot>
 
         <x-slot name="actions">

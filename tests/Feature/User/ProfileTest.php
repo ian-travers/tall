@@ -19,21 +19,45 @@ class ProfileTest extends TestCase
 
         Livewire::test(ProfileForm::class)
             ->set('username', 'NEED4FUN')
+            ->set('email', 'new@mail.com')
             ->call('submitForm');
 
-        $this->assertEquals('NEED4FUN', auth()->user()->username);
+        /** @var User $user */
+        $user = auth()->user();
+
+        $this->assertEquals('NEED4FUN', $user->username);
+        $this->assertEquals('new@mail.com', $user->email);
     }
 
     /** @test */
-    function username_must_always_be_unique()
+    function username_must_be_unique()
     {
-        $user = User::factory()->create();
+        /** @var User $user */
+        $user = User::factory()->create([
+            'username' => 'NEED4FUN',
+        ]);
 
-        $this->signIn($user);
+        $this->signIn();
 
         Livewire::test(ProfileForm::class)
             ->set('username', $user->username)
             ->call('submitForm')
-            ->assertHasNoErrors('username');
+            ->assertHasErrors('username');
+    }
+
+    /** @test */
+    function email_must_be_unique()
+    {
+        /** @var User $user */
+        $user = User::factory()->create([
+            'email' => 'NEED4FUN@mail.com',
+        ]);
+
+        $this->signIn();
+
+        Livewire::test(ProfileForm::class)
+            ->set('email', $user->email)
+            ->call('submitForm')
+            ->assertHasErrors('email');
     }
 }
