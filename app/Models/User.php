@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
  * @property int $id
  * @property string $username
  * @property string $email
+ * @property string $country
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -24,6 +25,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
+ * @method static Builder|User whereCountry($value)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereEmail($value)
  * @method static Builder|User whereEmailVerifiedAt($value)
@@ -39,32 +41,18 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'username',
         'email',
+        'country',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

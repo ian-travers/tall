@@ -52,6 +52,18 @@
         @error('email')<p class="text-red-500 mt-1 text-xs">{{ $message }}</p>@enderror
 
         <div class="mt-4">
+            <x-label for="country" value="{{ __('Country') }}"/>
+            <select
+                wire:model="country"
+                id="country"
+                name="country"
+                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md f16"
+            >
+                <option disabled>{{ __('Select country ...') }}</option>
+            </select>
+        </div>
+
+        <div class="mt-4">
             <x-label for="password" value="{{ __('Password') }}"/>
             <x-input
                 wire:model.lazy="password"
@@ -76,6 +88,8 @@
             </x-button>
         </div>
 
-{{--        <x-honey-recaptcha/>--}}
+        {{--        <x-honey-recaptcha/>--}}
     </form>
 </x-auth.card>
+
+@include('partials.countries-list')

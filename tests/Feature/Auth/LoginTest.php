@@ -70,6 +70,7 @@ class LoginTest extends TestCase
         return User::create([
             'username' => 'John',
             'email' => 'john@example.com',
+            'country' => 'de',
             'password' => Hash::make('password'),
         ]);
     }

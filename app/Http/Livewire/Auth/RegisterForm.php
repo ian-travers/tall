@@ -14,6 +14,7 @@ class RegisterForm extends Component
 
     public string $username = '';
     public string $email = '';
+    public string $country = '';
     public string $password = '';
 
     public string $submitMessage = '';
@@ -21,6 +22,7 @@ class RegisterForm extends Component
     protected array $rules = [
         'username' => 'required|min:3|max:15|regex:/^[A-Za-z0-9_]+$/|unique:users',
         'email' => 'required|email:filter|unique:users',
+        'country' => 'required|min:2|max:2',
         'password' => 'required|min:8|regex:/^\S*$/u',
     ];
 
@@ -43,10 +45,10 @@ class RegisterForm extends Component
         //        $response = Honey::recaptcha()->checkToken($token);
         //        $this->submitMessage = str_replace(',"', ', "', collect($response)->toJson());
 
-//        dd($this->username, $this->email, $this->password);
         User::create([
             'username' => $this->username,
             'email' => $this->email,
+            'country' => $this->country,
             'password' => Hash::make($this->password),
         ]);
 
@@ -55,7 +57,9 @@ class RegisterForm extends Component
 
     public function render()
     {
-        return view('livewire.auth.register-form')
+        return view('livewire.auth.register-form', [
+            'locale' => app()->getLocale(),
+        ])
             ->layout('components.layouts.auth', [
                 'title' => __('Register')
             ]);

@@ -28,3 +28,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 
 import 'alpinejs';
+
+window.countries = require('i18n-iso-countries');
+countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+countries.registerLocale(require("i18n-iso-countries/langs/ru.json"));

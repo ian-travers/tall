@@ -20,6 +20,7 @@ class RegisterTest extends TestCase
         Livewire::test(RegisterForm::class)
             ->set('username', 'John')
             ->set('email', 'john@example.com')
+            ->set('country', 'de')
             ->set('password', 'password')
             ->call('submitForm');
 

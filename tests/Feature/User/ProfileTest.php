@@ -20,6 +20,7 @@ class ProfileTest extends TestCase
         Livewire::test(ProfileForm::class)
             ->set('username', 'NEED4FUN')
             ->set('email', 'new@mail.com')
+            ->set('country', 'AU')
             ->call('submitForm');
 
         /** @var User $user */
@@ -27,6 +28,7 @@ class ProfileTest extends TestCase
 
         $this->assertEquals('NEED4FUN', $user->username);
         $this->assertEquals('new@mail.com', $user->email);
+        $this->assertEquals('AU', $user->country);
     }
 
     /** @test */

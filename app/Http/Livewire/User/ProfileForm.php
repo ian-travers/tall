@@ -9,12 +9,14 @@ class ProfileForm extends Component
 {
     public string $username = '';
     public string $email = '';
+    public string $country = '';
 
     protected function rules()
     {
         return [
             'username' => 'required|min:3|max:15|regex:/^[A-Za-z0-9_]+$/|unique:users,username,' . auth()->id(),
             'email' => 'required|email:filter|unique:users,email,' . auth()->id(),
+            'country' => 'required|max:2',
         ];
     }
 
@@ -29,6 +31,7 @@ class ProfileForm extends Component
 
         $this->username = $user->username;
         $this->email = $user->email;
+        $this->country = $user->country;
     }
 
     public function updatedUsername()
@@ -53,7 +56,9 @@ class ProfileForm extends Component
 
     public function render()
     {
-        return view('livewire.user.profile-form')
+        return view('livewire.user.profile-form', [
+            'locale' => app()->getLocale(),
+        ])
             ->layout('components.layouts.app', [
                 'title' => __('Profile')
             ]);
