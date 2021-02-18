@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\CountriesList;
 use App\Models\User;
 use Hash;
 use Livewire\Component;
@@ -18,6 +19,7 @@ class RegisterForm extends Component
     public string $password = '';
 
     public string $submitMessage = '';
+    public array $countries;
 
     protected array $rules = [
         'username' => 'required|min:3|max:15|regex:/^[A-Za-z0-9_]+$/|unique:users',
@@ -25,6 +27,11 @@ class RegisterForm extends Component
         'country' => 'required|min:2|max:2',
         'password' => 'required|min:8|regex:/^\S*$/u',
     ];
+
+    public function mount()
+    {
+        $this->countries = CountriesList::all(app()->getLocale());
+    }
 
     public function updatedUsername()
     {
@@ -39,11 +46,14 @@ class RegisterForm extends Component
     public function submitForm()
     {
         $this->validate();
-        // TODO: Check the recaptcha response and create a new user when getting online
 
-        //        $token = $this->recaptchaToken();
-        //        $response = Honey::recaptcha()->checkToken($token);
-        //        $this->submitMessage = str_replace(',"', ', "', collect($response)->toJson());
+        $token = $this->recaptchaToken();
+        $response = Honey::recaptcha()->checkToken($token);
+        if ($response['success']) {
+            $this->emit('recaptchaFailed');
+            $this->submitMessage = 'Recaptcha failed!';
+            return;
+        }
 
         User::create([
             'username' => $this->username,

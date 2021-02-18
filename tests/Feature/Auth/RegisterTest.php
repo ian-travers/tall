@@ -12,27 +12,12 @@ class RegisterTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function guest_can_register_an_account()
-    {
-        $this->get('/register')
-            ->assertSeeLivewire('auth.register-form');
-
-        Livewire::test(RegisterForm::class)
-            ->set('username', 'John')
-            ->set('email', 'john@example.com')
-            ->set('country', 'de')
-            ->set('password', 'password')
-            ->call('submitForm');
-
-        $this->assertDatabaseCount('users', 1);
-    }
-
-    /** @test */
     function it_requires_a_username()
     {
         Livewire::test(RegisterForm::class)
             ->set('email', 'john@example.com')
             ->set('password', 'password')
+            ->set('country', 'DE')
             ->call('submitForm')
             ->assertHasErrors(['username' => 'required']);
 

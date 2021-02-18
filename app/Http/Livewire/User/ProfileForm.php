@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\User;
 
+use App\Models\CountriesList;
 use App\Models\User;
 use Livewire\Component;
 
@@ -10,6 +11,8 @@ class ProfileForm extends Component
     public string $username = '';
     public string $email = '';
     public string $country = '';
+
+    public array $countries;
 
     protected function rules()
     {
@@ -32,6 +35,8 @@ class ProfileForm extends Component
         $this->username = $user->username;
         $this->email = $user->email;
         $this->country = $user->country;
+
+        $this->countries = CountriesList::all(app()->getLocale());
     }
 
     public function updatedUsername()
