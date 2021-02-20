@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\User
@@ -14,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $username
  * @property string $email
  * @property string $country
+ * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -25,6 +27,7 @@ use Illuminate\Notifications\Notifiable;
  * @method static Builder|User newModelQuery()
  * @method static Builder|User newQuery()
  * @method static Builder|User query()
+ * @method static Builder|User whereAvatar($value)
  * @method static Builder|User whereCountry($value)
  * @method static Builder|User whereCreatedAt($value)
  * @method static Builder|User whereEmail($value)
@@ -45,6 +48,7 @@ class User extends Authenticatable
         'username',
         'email',
         'country',
+        'avatar',
         'password',
     ];
 
@@ -56,4 +60,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasAvatar(): bool
+    {
+        return (bool)$this->avatar;
+    }
+
+    public function removeAvatarFile(): bool
+    {
+        if (!$this->hasAvatar()) {
+            return false;
+        }
+
+        return Storage::disk('public')->delete($this->avatar);
+    }
 }

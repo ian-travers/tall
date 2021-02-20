@@ -49,7 +49,7 @@ class RegisterForm extends Component
 
         $token = $this->recaptchaToken();
         $response = Honey::recaptcha()->checkToken($token);
-        if ($response['success']) {
+        if (!$response['success']) {
             $this->emit('recaptchaFailed');
             $this->submitMessage = 'Recaptcha failed!';
             return;
