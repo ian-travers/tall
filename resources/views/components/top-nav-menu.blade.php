@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="hidden md:block">
-                <div class="ml-4 flex items-center md:ml-6">
+                <div class="flex items-center">
                     @auth()
                         <button
                             class="bg-nfsu-brand p-1 text-gray-400 rounded-full hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
@@ -55,7 +55,8 @@
                                     >
                                 </button>
                             </x-slot>
-                            <x-dropdown-link href="{{ route('settings.profile') }}">{{ __('Settings') }}</x-dropdown-link>
+                            <x-dropdown-link
+                                href="{{ route('settings.profile') }}">{{ __('Settings') }}</x-dropdown-link>
                             <form method="post" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link
@@ -72,13 +73,12 @@
                         <x-nav-link route="login">{{ __('Login') }}</x-nav-link>
                         <x-nav-link route="register">{{ __('Register') }}</x-nav-link>
                     @endguest
+                    <!-- Language switcher -->
+                    <x-language-switcher class=""></x-language-switcher>
                 </div>
             </div>
-            <!-- Language switcher -->
-            <x-language-switcher class="absolute right-16 md:right-28 xl:right-3"></x-language-switcher>
-            <div
-                class="-mr-2 md:hidden"
-            >
+
+            <div class="-mr-2 md:hidden flex items-center">
                 <!-- Mobile menu button -->
                 <button
                     @click="isOpen = !isOpen"
@@ -95,6 +95,7 @@
                               d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 </button>
+                <x-language-switcher class=""></x-language-switcher>
             </div>
         </div>
     </div>
