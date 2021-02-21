@@ -57,12 +57,19 @@
                             <img src="{{ $avatarPath }}" class="max-w-full" alt="avatar">
                         @endif
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-4 text-center">
                         <x-input
                             wire:model="avatar"
-                            class="block mt-1 w-full"
+                            id="file"
+                            class="block mt-1 w-full inputfile"
                             type="file" name="avatar"
                         />
+                        <label
+                            for="file"
+                            class="px-4 py-2 bg-nfsu-brand border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150"
+                        >
+                            {{ __('Upload new avatar') }}
+                        </label>
                     </div>
                 </div>
             </div>
