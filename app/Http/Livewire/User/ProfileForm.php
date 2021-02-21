@@ -71,9 +71,11 @@ class ProfileForm extends Component
             $formData['avatar'] = $filePath;
             $this->hasAvatar = true;
             $this->avatarPath = $filePath;
+            $user->removeAvatarFile(); // remove previous
+        } else {
+            unset($formData['avatar']); // prevent removing old avatar when the the one is not set
         }
 
-        $user->removeAvatarFile();
         $user->update($formData);
 
         $this->emit('saved');
@@ -91,6 +93,7 @@ class ProfileForm extends Component
 
         $this->avatarPath = '';
         $this->hasAvatar = false;
+        $this->avatar = null;
 
         $this->emit('removed');
     }
