@@ -91,6 +91,8 @@ class ProfileForm extends Component
 
         $this->avatarPath = '';
         $this->hasAvatar = false;
+
+        $this->emit('removed');
     }
 
     public function render()

@@ -99,6 +99,9 @@
             <x-action-message class="mr-3" on="saved">
                 {{ __('Saved.') }}
             </x-action-message>
+            <x-action-message class="mr-3" on="removed">
+                {{ __('Removed.') }}
+            </x-action-message>
             <x-button wire:loading.attr="disabled" wire:target="avatar">
                 {{ __('Save') }}
             </x-button>
