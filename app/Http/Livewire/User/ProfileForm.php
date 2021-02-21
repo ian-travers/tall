@@ -69,12 +69,28 @@ class ProfileForm extends Component
         if ($this->avatar) {
             $filePath = $this->avatar->store('avatars', 'public');
             $formData['avatar'] = $filePath;
+            $this->hasAvatar = true;
+            $this->avatarPath = $filePath;
         }
 
         $user->removeAvatarFile();
         $user->update($formData);
 
         $this->emit('saved');
+    }
+
+    public function removeAvatar()
+    {
+        /** @var User $user */
+        $user = auth()->user();
+
+        $user->removeAvatarFile();
+        $user->update([
+            'avatar' => null,
+        ]);
+
+        $this->avatarPath = '';
+        $this->hasAvatar = false;
     }
 
     public function render()

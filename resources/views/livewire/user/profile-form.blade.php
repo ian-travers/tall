@@ -1,4 +1,9 @@
 <div class="px-4 md:px-8">
+    @if (session('status'))
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
+    @endif
     <x-form submit="submitForm" class="mt-4">
         <x-slot name="title">{{ __('Profile information') }}</x-slot>
         <x-slot name="description">{{ __("Update your account's profile information and email address.") }}</x-slot>
@@ -52,9 +57,9 @@
                     <x-label for="avatar" value="{{ __('Avatar') }}"/>
                     <div class="flex justify-center">
                         @if($avatar)
-                            <img src="{{ $avatar->temporaryUrl() }}" class="max-w-full" alt="avatar">
+                            <img src="{{ $avatar->temporaryUrl() }}" class="w-full" alt="avatar">
                         @elseif($hasAvatar)
-                            <img src="{{ $avatarPath }}" class="max-w-full" alt="avatar">
+                            <img src="{{ $avatarPath }}" class="w-full" alt="avatar">
                         @endif
                     </div>
                     <div class="mt-4 text-center">
@@ -71,6 +76,18 @@
                             {{ __('Upload new avatar') }}
                         </label>
                     </div>
+                    @if($hasAvatar)
+                        <div class="mt-4 text-center">
+                            <button
+                                onclick="confirm('Are you sure you want to remove the avatar?') || event.stopImmediatePropagation()"
+                                wire:click="removeAvatar"
+                                type="button"
+                                class="px-4 py-2 items-center bg-yellow-300 border border-transparent rounded-md font-semibold text-xs text-nfsu-brand uppercase tracking-widest hover:bg-yellow-400 active:bg-yellow-500 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150"
+                            >
+                                {{__('Without avatar') }}
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </x-slot>
