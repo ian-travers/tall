@@ -62,6 +62,9 @@
                             <img src="{{ $avatarPath }}" class="w-full" alt="avatar">
                         @endif
                     </div>
+                    @if(!$hasAvatar)
+                        <div class="mt-3 text-center">{{ __('You still have no an avatar') }}</div>
+                    @endif
                     <div class="mt-4 text-center">
                         <x-input
                             wire:model="avatar"
