@@ -68,12 +68,14 @@ class ProfileForm extends Component
 
         if ($this->avatar) {
             $filePath = $this->avatar->store('avatars', 'public');
+
+
             $formData['avatar'] = $filePath;
             $this->hasAvatar = true;
             $this->avatarPath = $filePath;
             $user->removeAvatarFile(); // remove previous
         } else {
-            unset($formData['avatar']); // prevent removing old avatar when the the one is not set
+            unset($formData['avatar']); // prevent to remove old avatar when the new one is not set
         }
 
         $user->update($formData);
