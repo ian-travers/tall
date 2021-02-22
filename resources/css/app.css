@@ -21,3 +21,10 @@
     display: inline-block;
     cursor: pointer;
 }
+
+progress::-webkit-progress-bar {
+    background-color: #fafafa;
+}
+progress::-webkit-progress-value {
+    background-color: #003548;
+}

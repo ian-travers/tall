@@ -54,7 +54,7 @@
                     @error('country')<p class="text-red-500 mt-1 text-xs">{{ $message }}</p>@enderror
                 </div>
                 <div>
-                    <x-label for="avatar" value="{{ __('Avatar') }}"/>
+                    <x-label for="avatar" class="text-center" value="{{ __('Avatar') }}"/>
                     <div class="flex justify-center">
                         @if($avatar)
                             <img src="{{ $avatar->temporaryUrl() }}" class="w-full" alt="avatar">
@@ -63,9 +63,19 @@
                         @endif
                     </div>
                     @if(!$hasAvatar)
-                        <div class="mt-3 text-center">{{ __('You still have no an avatar') }}</div>
+                        <div class="mt-3 text-center">
+                            <p>{{ __('You still have no an avatar') }}</p>
+                            <p class="text-sm text-gray-400">{{ __("Don't forget to save when uploading a new avatar") }}</p>
+                        </div>
                     @endif
-                    <div class="mt-4 text-center">
+                    <div
+                        class="mt-4 text-center"
+                        x-data="{ isUploading: false, progress: 0 }"
+                        x-on:livewire-upload-start="isUploading = true"
+                        x-on:livewire-upload-finish="isUploading = false"
+                        x-on:livewire-upload-error="isUploading = false"
+                        x-on:livewire-upload-progress="progress = $event.detail.progress"
+                    >
                         <x-input
                             wire:model="avatar"
                             id="file"
@@ -78,7 +88,15 @@
                         >
                             {{ __('Upload new avatar') }}
                         </label>
+
+                        <!-- Progress Bar -->
+                        <div
+                            x-show="isUploading"
+                        >
+                            <progress class="w-full h-0.5" max="100" x-bind:value="progress"></progress>
+                        </div>
                     </div>
+
                     @if($hasAvatar)
                         <div class="mt-4 text-center">
                             <button
