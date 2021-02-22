@@ -6,8 +6,7 @@
 @endphp
 
 <a
-{{--    href="{{ route($route) }}"--}}
-    href="#"
+    href="{{ $route != '#' ? route($route) : $route }}"
     {{ $attributes->merge(['class' => 'hover:bg-gray-700 hover:text-blue-100 px-3 py-2 rounded-md font-medium block ' . $classes ]) }}
     role="menuitem"
 >
