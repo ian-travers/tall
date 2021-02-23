@@ -49,11 +49,7 @@
                                 >
                                     <span class="sr-only">Open user menu</span>
                                     @if(auth()->user()->hasAvatar())
-                                        <img
-                                            class="h-10 w-10 rounded-full"
-                                            src="{{ Storage::url(auth()->user()->avatar) }}"
-                                            alt="avatar"
-                                        >
+                                        @livewire('user.avatar')
                                     @else
                                         <span
                                             class="inline-block h-10 w-10 rounded-full overflow-hidden bg-gray-100">

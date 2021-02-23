@@ -81,6 +81,7 @@ class ProfileForm extends Component
         $user->update($formData);
 
         $this->emit('saved');
+        $this->emitTo('user.avatar', 'avatarChanged');
     }
 
     public function removeAvatar()
