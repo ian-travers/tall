@@ -7,13 +7,15 @@ use Livewire\Component;
 
 class Avatar extends Component
 {
-    public string $src = '';
+    public string $avatarPath = '';
+    public bool $hasAvatar = false;
 
     protected $listeners = ['avatarChanged'];
 
     public function mount()
     {
-        $this->src = Storage::url(auth()->user()->avatar);
+        $this->hasAvatar = auth()->user()->hasAvatar();
+        $this->avatarPath = Storage::url(auth()->user()->avatar);
     }
 
     public function avatarChanged()

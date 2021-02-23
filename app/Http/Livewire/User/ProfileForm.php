@@ -99,6 +99,7 @@ class ProfileForm extends Component
         $this->avatar = null;
 
         $this->emit('removed');
+        $this->emitTo('user.avatar', 'avatarChanged');
     }
 
     public function render()

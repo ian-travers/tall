@@ -18,21 +18,7 @@
         @auth
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
-                    @if(auth()->user()->hasAvatar())
-                        @livewire('user.avatar')
-                    @else
-                        <span
-                            class="inline-block h-10 w-10 rounded-full overflow-hidden bg-gray-100">
-                            <svg
-                                class="h-full w-full text-gray-300"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"/>
-                            </svg>
-                        </span>
-                    @endif
+                    @livewire('user.avatar')
                 </div>
                 <div class="ml-3">
                     <div class="text-base font-medium leading-none text-white">{{ auth()->user()->username }}</div>
@@ -50,7 +36,7 @@
             <div class="mt-3 px-2 space-y-1">
                 <x-mobile-nav-link route="settings.profile">{{ __('Settings') }}</x-mobile-nav-link>
                 <form method="post" action="{{ route('logout') }}">
-                @csrf
+                    @csrf
                     <x-mobile-nav-link
                         route="logout"
                         onclick="event.preventDefault(); this.closest('form').submit();"
@@ -62,8 +48,8 @@
         @endauth
 
         @guest
-                <x-mobile-nav-link route="login">{{ __('Login') }}</x-mobile-nav-link>
-                <x-mobile-nav-link route="register">{{ __('Register') }}</x-mobile-nav-link>
+            <x-mobile-nav-link route="login">{{ __('Login') }}</x-mobile-nav-link>
+            <x-mobile-nav-link route="register">{{ __('Register') }}</x-mobile-nav-link>
         @endguest
     </div>
 </div>
