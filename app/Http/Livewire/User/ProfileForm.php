@@ -21,6 +21,8 @@ class ProfileForm extends Component
     public string $avatarPath = '';
     public array $countries;
 
+    protected $listeners = ['saved', 'removed'];
+
     protected function rules()
     {
         return [
@@ -100,6 +102,22 @@ class ProfileForm extends Component
 
         $this->emit('removed');
         $this->emitTo('user.avatar', 'avatarChanged');
+    }
+
+    public function saved()
+    {
+        session()->flash('status', [
+            'type' => 'success',
+            'message' => __('Saved'),
+        ]);
+    }
+
+    public function removed()
+    {
+        session()->flash('status', [
+            'type' => 'info',
+            'message' => __('There is no avatar in your profile now.'),
+        ]);
     }
 
     public function render()

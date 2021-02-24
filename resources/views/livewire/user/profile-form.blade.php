@@ -1,9 +1,8 @@
 <div class="px-4 md:px-8">
-    @if (session('status'))
-        <div class="mb-4 font-medium text-sm text-green-600">
-            {{ session('status') }}
-        </div>
+    @if ($alert = session('status'))
+        <x-alert-message type="{{ $alert['type'] }}">{{ $alert['message'] }}</x-alert-message>
     @endif
+
     <x-form submit="submitForm" class="mt-4">
         <x-slot name="title">{{ __('Profile information') }}</x-slot>
         <x-slot name="description">{{ __("Update your account's profile information and email address.") }}</x-slot>
@@ -59,7 +58,7 @@
                         @if($avatar)
                             <img src="{{ $avatar->temporaryUrl() }}" class="w-80" alt="avatar">
                         @elseif($hasAvatar)
-                            <img src="{{ $avatarPath }}" class="w-full" alt="avatar">
+                            <img src="{{ $avatarPath }}" class="w-80" alt="avatar">
                         @endif
                     </div>
                     @if(!$hasAvatar)
@@ -100,7 +99,7 @@
                     @if($hasAvatar)
                         <div class="mt-4 text-center">
                             <button
-                                onclick="confirm('Are you sure you want to remove the avatar?') || event.stopImmediatePropagation()"
+                                onclick="confirm() || event.stopImmediatePropagation()"
                                 wire:click="removeAvatar"
                                 type="button"
                                 class="px-4 py-2 items-center bg-yellow-300 border border-transparent rounded-md font-semibold text-xs text-nfsu-brand uppercase tracking-widest hover:bg-yellow-400 active:bg-yellow-500 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150"
@@ -114,12 +113,6 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-action-message class="mr-3" on="saved">
-                {{ __('Saved.') }}
-            </x-action-message>
-            <x-action-message class="mr-3" on="removed">
-                {{ __('Removed.') }}
-            </x-action-message>
             <x-button wire:loading.attr="disabled" wire:target="avatar">
                 {{ __('Save') }}
             </x-button>

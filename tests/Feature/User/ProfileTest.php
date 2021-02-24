@@ -115,8 +115,7 @@ class ProfileTest extends TestCase
         Storage::disk('public')->assertExists($filePath);
 
         Livewire::test(ProfileForm::class)
-            ->call('removeAvatar')
-            ->assertSee('Removed.');
+            ->call('removeAvatar');
 
         $user->refresh();
 
