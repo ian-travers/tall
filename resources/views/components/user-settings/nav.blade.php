@@ -1,4 +1,4 @@
-<div class="border border-indigo-300 px-4 py-2 bg-white rounded-md">
+<div class="px-4 py-2 bg-white rounded sm:rounded-md">
     <div class="text-xl">
         {{ __('Account settings') }}
     </div>
