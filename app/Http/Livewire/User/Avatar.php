@@ -9,6 +9,7 @@ class Avatar extends Component
 {
     public string $avatarPath = '';
     public bool $hasAvatar = false;
+    public string $size = '10'; // square dimension for tailwind css h-{{ $size }}
 
     protected $listeners = ['avatarChanged'];
 
