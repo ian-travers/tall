@@ -1,9 +1,9 @@
-<div class="px-4 md:px-8">
+<div>
     @if ($alert = session('status'))
         <x-alert-message type="{{ $alert['type'] }}">{{ $alert['message'] }}</x-alert-message>
     @endif
 
-    <x-form submit="submitForm" class="mt-4">
+    <x-form submit="submitForm">
         <x-slot name="title">{{ __('Profile information') }}</x-slot>
         <x-slot name="description">{{ __("Update your account's profile information and email address.") }}</x-slot>
 

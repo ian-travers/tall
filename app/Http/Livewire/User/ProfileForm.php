@@ -125,8 +125,9 @@ class ProfileForm extends Component
         return view('livewire.user.profile-form', [
             'locale' => app()->getLocale(),
         ])
-            ->layout('components.layouts.app', [
-                'title' => __('Profile')
+            ->layout('components.layouts.user-settings', [
+                'title' => __('Profile'),
+                'username' => auth()->user()->username,
             ]);
     }
 }

@@ -38,6 +38,10 @@ Route::group(['middleware' => 'language'], function () {
         ->middleware(['auth'])
         ->name('settings.profile');
 
+    Route::get('/settings/account', [App\Http\Controllers\User\AccountController::class, 'show'])
+        ->middleware(['auth'])
+        ->name('settings.account');
+
     Route::get('/tourneys', function () {
         return view('welcome');
     })->name('tourneys');

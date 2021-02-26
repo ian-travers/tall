@@ -1,6 +1,8 @@
 {
     "About": "О проекте",
+    "Account": "Аккаунт",
     "Account login": "Вход в аккаунт",
+    "Account settings": "Настройки аккаунта",
     "Already registered?": "Есть аккаунт?",
     "Avatar": "Аватар",
     "Best Performers": "Звёзды треков",
@@ -21,6 +23,7 @@
     "Forgot your password? No problem. Just let me know your email address and I will email you a password reset link that will allow you to choose a new one.": "Забыли свой пароль? Нет проблем. Просто укажите мне ваш адрес email и я отправлю вам ссылку для восстановления доступа к аккаунту и выбора нового пароля.",
     "Game Server": "Игровой сервер",
     "Gameplay": "Геймплей",
+    "Go to your public profile page": "Ваш публичный профиль",
     "Hello!": "Привет!",
     "Help": "Помощь",
     "If you did not create an account, no further action is required.": "Если вы не создавали учетную запись, то никаких дополнительных действий не требуется. Игнорируйте это письмо или удалите его.",
@@ -67,5 +70,6 @@
     "Without avatar": "Не использовать аватар",
     "You are receiving this email because we received a password reset request for your account.": "Вы получили это письмо, потому что был получен запрос на восстановление пароля для вашей учетной записи.",
     "You must be logged in.": "Вы должны войти на сайт.",
-    "You still have no an avatar": "У вас всё ещё нет аватара"
+    "You still have no an avatar": "У вас всё ещё нет аватара",
+    "Your personal account": "Ваш персональный аккаунт"
 }
