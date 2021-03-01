@@ -9,7 +9,8 @@ class AccountController extends Controller
     public function show()
     {
         $user = auth()->user();
+        $title = __('Account');
 
-        return view('account', compact('user'));
+        return view('account', compact('user', 'title'));
     }
 }

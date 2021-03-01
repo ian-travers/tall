@@ -1,4 +1,4 @@
-<x-layouts.app>
+<x-layouts.app title="{{ $title }}">
     <div class="px-4 md:px-8 mt-2">
         <x-user-settings.header username="{{ $username }}"></x-user-settings.header>
         <div class="flex flex-col sm:flex-row">
