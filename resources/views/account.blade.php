@@ -1,4 +1,7 @@
 <x-layouts.user-settings username="{{ $user->username }}" title="{{ $title }}">
+
+    @livewire('parent-alert')
+
     <div class="overflow-hidden rounded sm:rounded-md">
         <div class="px-4 py-5 bg-white space-y-4">
             <div class="border border-indigo-100 rounded sm:rounded-md">
@@ -33,7 +36,6 @@
         </div>
     </div>
 
-
     <!--Modal change password -->
     <div
         id="changePassword"
@@ -49,9 +51,7 @@
                 <span class="text-sm">(Esc)</span>
             </div>
 
-            <!-- Add margin if you want to see some of the overlay behind the modal-->
             <div class="modal-content py-4 text-left px-6">
-                <!--Title-->
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl">{{ __('Changing password') }}</p>
                     <div class="modal-close cursor-pointer z-50">
@@ -62,23 +62,12 @@
                     </div>
                 </div>
 
-                <!--Body-->
-                <p>Modal content can go here</p>
-                <p>...</p>
-
-                <!--Footer-->
-                <div class="flex justify-end pt-2">
-                    <button
-                        class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">
-                        Action
-                    </button>
-                    <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close
-                    </button>
-                </div>
+                @livewire('user.change-password-form')
 
             </div>
         </div>
     </div>
+
 
     <!--Modal delete account -->
     <div
@@ -151,7 +140,7 @@
 
             document.onkeydown = function (evt) {
                 evt = evt || window.event
-                var isEscape = false
+                var isEscape
                 if ("key" in evt) {
                     isEscape = (evt.key === "Escape" || evt.key === "Esc")
                 } else {
@@ -172,6 +161,10 @@
                 modal.classList.toggle('pointer-events-none')
                 body.classList.toggle('modal-active')
             }
+
+            window.addEventListener('passwordChanged', () => {
+                toggleModal()
+            })
         </script>
     @endpush
 
