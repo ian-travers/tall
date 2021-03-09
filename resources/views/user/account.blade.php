@@ -97,19 +97,7 @@
                     </div>
                 </div>
 
-                <!--Body-->
-                <p>Modal content can go here</p>
-                <p>...</p>
-
-                <!--Footer-->
-                <div class="flex justify-end pt-2">
-                    <button
-                        class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">
-                        Action
-                    </button>
-                    <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close
-                    </button>
-                </div>
+                @livewire('user.delete-account-form')
 
             </div>
         </div>
@@ -162,7 +150,7 @@
                 body.classList.toggle('modal-active')
             }
 
-            window.addEventListener('passwordChanged', () => {
+            window.addEventListener('modalSubmitted', () => {
                 toggleModal()
             })
         </script>

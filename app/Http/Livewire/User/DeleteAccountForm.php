@@ -7,11 +7,43 @@ use Livewire\Component;
 
 class DeleteAccountForm extends Component
 {
-    public string $password = '';
+    public string $email = '';
+    public string $phrase = '';
 
-    protected array $rules = [
-        'password' => 'required|min:8',
+    protected function rules()
+    {
+        return [
+            'email' => ['required', 'email', 'in:' . auth()->user()->email],
+            'phrase' => 'required|regex:/delete my account right now/',
+        ];
+    }
+
+//    protected $messages = [
+//        'email.in' => 'You must provide your email address.',
+//        'phrase.regex' => 'You must repeat the verify phrase exactly',
+//    ];
+
+    protected function messages()
+    {
+        return [
+            'email.in' => __('You must provide your email address.'),
+            'phrase.regex' => __('You must repeat the verify phrase exactly'),
+        ];
+    }
+
+    protected $validationAttributes = [
+        'phrase' => 'verify phrase'
     ];
+
+    public function updatedEmail()
+    {
+        $this->validateOnly('email');
+    }
+
+    public function updatedPhrase()
+    {
+        $this->validateOnly('phrase');
+    }
 
     public function submitForm()
     {
@@ -21,6 +53,11 @@ class DeleteAccountForm extends Component
         $user = auth()->user();
 
         $user->delete();
+
+        $this->dispatchBrowserEvent('modalSubmitted');
+
+        // TODO: flash message
+        return redirect()->route('root');
     }
 
     public function render()

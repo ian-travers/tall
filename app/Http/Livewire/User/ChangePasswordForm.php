@@ -27,7 +27,7 @@ class ChangePasswordForm extends Component
         $user->forceFill(['password' => Hash::make($this->password)])->save();
 
         $this->emitTo('parent-alert', 'passwordChanged');
-        $this->dispatchBrowserEvent('passwordChanged');
+        $this->dispatchBrowserEvent('modalSubmitted');
     }
 
     public function render()
