@@ -1,5 +1,10 @@
 <x-layouts.app>
-    <div class="m-3 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-0 gap-y-1 sm:gap-x-1 lg:gap-x-2 text-white">
+    @if ($alert = session('status'))
+        <x-alert-message type="{{ $alert['type'] }}">{{ $alert['message'] }}</x-alert-message>
+    @endif
+
+    <div
+        class="m-3 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-0 gap-y-1 sm:gap-x-1 lg:gap-x-2 text-white">
         <div class="border border-indigo-300">1</div>
         <div class="border border-indigo-300 h-32">2</div>
         <div class="border border-indigo-300 h-32">3</div>

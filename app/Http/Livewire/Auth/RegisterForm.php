@@ -49,6 +49,7 @@ class RegisterForm extends Component
 
         $token = $this->recaptchaToken();
         $response = Honey::recaptcha()->checkToken($token);
+
         if (!$response['success']) {
             $this->emit('recaptchaFailed');
             $this->submitMessage = 'Recaptcha failed!';
@@ -62,7 +63,11 @@ class RegisterForm extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        // TODO: flash message
+        request()->session()->flash('status', [
+            'type' => 'success',
+            'message' => __('Your account has been registered. You may login the site right now.'),
+        ]);
+
         return redirect()->route('root');
     }
 

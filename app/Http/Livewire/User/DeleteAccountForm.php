@@ -51,7 +51,11 @@ class DeleteAccountForm extends Component
 
         $this->dispatchBrowserEvent('modalSubmitted');
 
-        // TODO: flash message
+        request()->session()->flash('status', [
+            'type' => 'info',
+            'message' => __('Your account has been deleted. Bye now.'),
+        ]);
+
         return redirect()->route('root');
     }
 
