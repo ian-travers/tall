@@ -11,6 +11,6 @@ class AccountController extends Controller
         $user = auth()->user();
         $title = __('Account');
 
-        return view('account', compact('user', 'title'));
+        return view('user.account', compact('user', 'title'));
     }
 }
