@@ -62,7 +62,8 @@ class RegisterForm extends Component
             'password' => Hash::make($this->password),
         ]);
 
-        $this->submitMessage = 'OK';
+        // TODO: flash message
+        return redirect()->route('root');
     }
 
     public function render()

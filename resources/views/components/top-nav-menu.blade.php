@@ -2,11 +2,13 @@
     <div class="border-b border-gray-700">
         <div class="flex items-center justify-between h-16 px-4 sm:px-0">
             <div class="flex items-center">
-                <div class="flex items-center w-60">
-                    <img class="w-20 mr-1 md:w-24 md:mr-2" src="{{ asset('storage/logo.png') }}"
-                         alt="Logo">
-                    <span class="text-blue-200 hover:text-blue-100 text-lg md:text-2xl mb-0.5">NFSU Cup</span>
-                </div>
+                <a href="{{ route('root') }}">
+                    <div class="flex items-center w-60">
+                        <img class="w-20 mr-1 md:w-24 md:mr-2" src="{{ asset('storage/logo.png') }}"
+                             alt="Logo">
+                        <span class="text-blue-200 hover:text-blue-100 text-lg md:text-2xl mb-0.5">NFSU Cup</span>
+                    </div>
+                </a>
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-2">
                         <x-nav-link route="tourneys">{{ __('Tourneys') }}</x-nav-link>

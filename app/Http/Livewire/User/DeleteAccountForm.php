@@ -18,11 +18,6 @@ class DeleteAccountForm extends Component
         ];
     }
 
-//    protected $messages = [
-//        'email.in' => 'You must provide your email address.',
-//        'phrase.regex' => 'You must repeat the verify phrase exactly',
-//    ];
-
     protected function messages()
     {
         return [

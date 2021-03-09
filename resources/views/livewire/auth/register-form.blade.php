@@ -65,6 +65,7 @@
                 @endforeach
             </select>
         </div>
+        @error('country')<p class="text-red-500 mt-1 text-xs">{{ $message }}</p>@enderror
 
         <div class="mt-4">
             <x-label for="password" value="{{ __('Password') }}"/>
