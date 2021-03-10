@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\User;
 
+use App\Http\Livewire\User\DeleteAccountForm;
 use App\Http\Livewire\User\ProfileForm;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -156,5 +157,35 @@ class ProfileTest extends TestCase
 
         Storage::disk('public')->assertMissing($filePath);
         Storage::disk('public')->assertExists($user->avatar);
+    }
+
+    /** @test */
+    function avatar_file_is_removed_when_the_user_deletes_his_account()
+    {
+        Storage::fake('public');
+
+        /** @var User $user */
+        $user = User::factory()->create();
+        $this->signIn($user);
+
+        Livewire::test(ProfileForm::class)
+            ->set('username', $user->username)
+            ->set('email', $user->email)
+            ->set('country', $user->country)
+            ->set('avatar', $file = UploadedFile::fake()->image('avatar.png'))
+            ->call('submitForm');
+
+        $user->refresh();
+
+        $filePath = $user->avatar;
+
+        Storage::disk('public')->assertExists($filePath);
+
+        Livewire::test(DeleteAccountForm::class)
+            ->set('email', $user->email)
+            ->set('phrase', 'delete my account right now')
+            ->call('submitForm');
+
+        Storage::disk('public')->assertMissing($filePath);
     }
 }

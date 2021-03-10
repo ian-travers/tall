@@ -47,6 +47,7 @@ class DeleteAccountForm extends Component
         /** @var User $user */
         $user = auth()->user();
 
+        $user->removeAvatarFile();
         $user->delete();
 
         $this->dispatchBrowserEvent('modalSubmitted');
