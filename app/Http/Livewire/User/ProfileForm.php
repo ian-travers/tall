@@ -108,7 +108,7 @@ class ProfileForm extends Component
     {
         session()->flash('status', [
             'type' => 'success',
-            'message' => __('Saved'),
+            'message' => __('Saved.'),
         ]);
     }
 

@@ -42,6 +42,34 @@ Route::group(['middleware' => 'language'], function () {
         ->middleware(['auth'])
         ->name('settings.account');
 
+    // Backend
+    Route::group([
+        'middleware' => ['auth', 'admin'],
+        'prefix' => '/a',
+        'namespace' => 'Backend',
+        'as' => 'admin.'
+    ], function () {
+        Route::get('', [App\Http\Controllers\Backend\DashboardController::class, 'show'])->name('dashboard');
+
+        Route::get('/tests', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'index'])->name('tests.questions');
+        Route::get('/tests/create', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'create'])->name('tests.questions.create');
+        Route::post('/tests', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'store'])->name('tests.questions.store');
+        Route::get('/tests/{question}/edit', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'edit'])->name('tests.questions.edit');
+        Route::get('/tests/{question}', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'show'])->name('tests.questions.show');
+        Route::patch('/tests/{question}', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'update'])->name('tests.questions.update');
+        Route::delete('/tests/{question}', [App\Http\Controllers\Backend\Tests\QuestionsController::class, 'remove'])->name('tests.questions.delete');
+
+        Route::group([
+            'prefix' => '/tests/{question}/answers',
+        ], function () {
+            Route::get('/create', [App\Http\Controllers\Backend\Tests\AnswersController::class, 'create'])->name('tests.answers.create');
+            Route::post('', [App\Http\Controllers\Backend\Tests\AnswersController::class, 'store'])->name('tests.answers.store');
+            Route::get('/{answer}/edit', [App\Http\Controllers\Backend\Tests\AnswersController::class, 'edit'])->name('tests.answers.edit');
+            Route::patch('/{answer}', [App\Http\Controllers\Backend\Tests\AnswersController::class, 'update'])->name('tests.answers.update');
+            Route::delete('/{answer}', [App\Http\Controllers\Backend\Tests\AnswersController::class, 'remove'])->name('tests.answers.delete');
+        });
+    });
+
     Route::get('/tourneys', function () {
         return view('welcome');
     })->name('tourneys');

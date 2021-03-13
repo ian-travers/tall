@@ -12,6 +12,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username', 32)->unique();
             $table->string('email')->unique();
+            $table->boolean('is_root')->default(false);
             $table->string('country', 2);
             $table->string('avatar')->nullable();
             $table->timestamp('email_verified_at')->nullable();

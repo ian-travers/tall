@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
  * @property int $id
  * @property string $username
  * @property string $email
+ * @property int $is_root
  * @property string $country
  * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $email_verified_at
@@ -33,6 +34,7 @@ use Illuminate\Support\Facades\Storage;
  * @method static Builder|User whereEmail($value)
  * @method static Builder|User whereEmailVerifiedAt($value)
  * @method static Builder|User whereId($value)
+ * @method static Builder|User whereIsRoot($value)
  * @method static Builder|User whereLocale($value)
  * @method static Builder|User wherePassword($value)
  * @method static Builder|User whereRememberToken($value)
@@ -47,6 +49,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'email',
+        'is_root',
         'country',
         'avatar',
         'password',
@@ -73,5 +76,10 @@ class User extends Authenticatable
         }
 
         return Storage::disk('public')->delete($this->avatar);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->is_root;
     }
 }
