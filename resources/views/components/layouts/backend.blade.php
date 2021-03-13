@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none" tabindex="0">
+            <main class="flex-1" tabindex="0">
                 {{ $slot }}
             </main>
         </div>
