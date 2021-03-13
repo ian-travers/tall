@@ -14,11 +14,7 @@
                         <th scope="col"
                             class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-40">{{ __('Correct answer') }}</th>
                         <th scope="col"
-                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">{{ __('Actions') }}</th>
-                        <th scope="col"
-                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-12">
-                            ID
-                        </th>
+                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center w-32">{{ __('Actions') }}</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y">
@@ -69,7 +65,6 @@
                                     </button>
                                 </form>
                             </td>
-                            <td class="px-4 py-2 text-sm font-medium text-gray-900 text-center">{{ $question->id }}</td>
                         </tr>
                     @endforeach
                     </tbody>
