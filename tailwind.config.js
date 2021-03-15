@@ -7,7 +7,7 @@ module.exports = {
             'nfsu-brand': '#003548'
         },
         backgroundImage: theme => ({
-            'nfsu-map': "url('/storage/map.png');",
+            'nfsu-map': "url('/storage/map-d50.png');",
         })
     },
   },

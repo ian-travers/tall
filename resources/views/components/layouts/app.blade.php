@@ -11,6 +11,9 @@
 <body class="antialiased min-h-screen flex flex-col">
 <x-header></x-header>
 <main class="flex-grow bg-nfsu-map bg-no-repeat bg-cover bg-fixed">
+    @if ($alert = session('status'))
+        <x-alert-message type="{{ $alert['type'] }}">{{ $alert['message'] }}</x-alert-message>
+    @endif
     {{ $slot }}
 </main>
 {{--<x-footer></x-footer>--}}

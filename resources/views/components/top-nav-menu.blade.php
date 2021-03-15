@@ -11,6 +11,7 @@
                 </a>
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-2">
+                        <x-nav-link route="rules.show">{{ __('Rules') }}</x-nav-link>
                         <x-nav-link route="tourneys">{{ __('Tourneys') }}</x-nav-link>
                         <x-nav-link route="stats">{{ __('Stats') }}</x-nav-link>
                         <x-dropdown>

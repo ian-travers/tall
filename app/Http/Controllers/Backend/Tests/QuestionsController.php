@@ -27,7 +27,10 @@ class QuestionsController extends Controller
     {
         TestQuestion::create($this->validateRequest());
 
-        return redirect()->route('admin.tests.questions')->with('status', __('Saved.'));
+        return redirect()->route('admin.tests.questions')->with('status', [
+            'type' => 'success',
+            'message' => __('Saved.'),
+        ]);
     }
 
     public function edit(TestQuestion $question)
@@ -41,7 +44,10 @@ class QuestionsController extends Controller
     {
         $question->update($this->validateRequest());
 
-        return redirect()->route('admin.tests.questions')->with('status', __('Updated.'));
+        return redirect()->route('admin.tests.questions')->with('status', [
+            'type' => 'success',
+            'message' => __('Updated.'),
+        ]);
     }
 
     public function show(TestQuestion $question)
@@ -55,7 +61,10 @@ class QuestionsController extends Controller
     {
         $question->delete();
 
-        return redirect()->route('admin.tests.questions')->with('status', __('Deleted.'));
+        return redirect()->route('admin.tests.questions')->with('status', [
+            'type' => 'success',
+            'message' => __('Deleted.'),
+        ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Models\Test;
 
+use App\Models\NativeAttribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TestAnswer extends Model
 {
-    use HasFactory;
+    use HasFactory, NativeAttribute;
 
     public $timestamps = false;
 
@@ -44,5 +45,10 @@ class TestAnswer extends Model
             'answer_ru' =>$answerRu,
             'index' => $index,
         ]);
+    }
+
+    public function getAnswerAttribute()
+    {
+        return $this->getNativeAttributeValue('answer');
     }
 }

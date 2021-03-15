@@ -2,6 +2,7 @@
 
 namespace App\Models\Test;
 
+use App\Models\NativeAttribute;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TestQuestion extends Model
 {
-    use HasFactory;
+    use HasFactory, NativeAttribute;
 
     public $timestamps = false;
 
@@ -60,5 +61,15 @@ class TestQuestion extends Model
         $answer = $this->answers()->findOrFail($id);
 
         $answer->delete();
+    }
+
+    public function getQuestionAttribute()
+    {
+        return $this->getNativeAttributeValue('question');
+    }
+
+    public function isCorrectAnswer(string $index): bool
+    {
+        return $this->correct_answer == $index;
     }
 }

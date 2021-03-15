@@ -70,6 +70,17 @@ Route::group(['middleware' => 'language'], function () {
         });
     });
 
+    Route::group(
+        [
+            'prefix' => 'rules',
+            'as' => 'rules.',
+        ],
+        function () {
+            Route::get('', [App\Http\Controllers\RulesController::class, 'show'])->name('show');
+            Route::post('', [App\Http\Controllers\RulesController::class, 'check'])->name('check');
+        }
+    );
+
     Route::get('/tourneys', function () {
         return view('welcome');
     })->name('tourneys');
