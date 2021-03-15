@@ -124,6 +124,7 @@
     "This password reset link will expire in :count minutes.": "Срок действия ссылки для восстановления пароля истекает через :count минут.",
     "To verify, type": "Для проверки наберите фразу",
     "Tourneys": "Турниры",
+    "Try to answer on these questions and check your understanding of the rules": "Попробуйте ответить на эти вопросы и проверить, как хорошо вы знаете правила",
     "Unsupported locale is provided.": "Неподдерживаемая локаль.",
     "Update": "Изменить",
     "Updated.": "Сохранено.",

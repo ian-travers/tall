@@ -46,11 +46,11 @@
             </div>
             <div class="px-4 md:px-6 flex-1">
                 <p class="text-3xl text-center mb-2">{{ __('Quiz') }}</p>
-                <p class="text-xl">Try to answer on these questions and check your understanding of the rules:</p>
+                <p class="text-xl pb-2 border-b border-blue-400">{{ __('Try to answer on these questions and check your understanding of the rules') }}:</p>
                 <form action="{{ route('rules.check') }}" method="post">
                     @csrf
                     @forelse($questions as $question)
-                        <div class="p-2">
+                        <div class="p-2 border-b border-blue-400">
                             <p class="text-lg">{{ $question->question }}</p>
                             @foreach($question->answers->shuffle() as $answer)
                                 <div>
