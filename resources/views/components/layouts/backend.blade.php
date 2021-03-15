@@ -1,5 +1,7 @@
 <x-layouts.app title="{{ $title }}">
     <div class="max-w-full mx-auto sm:px-6 lg:px-8">
+        @section('breadcrumbs', Breadcrumbs::render())
+        @yield('breadcrumbs')
         <div class="flex overflow-hidden bg-white">
             <div class="flex flex-col w-56">
                 <div class="flex flex-col h-0 flex-1 border-r border-gray-200 bg-white">

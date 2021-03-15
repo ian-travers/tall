@@ -4,6 +4,7 @@ return [
     'directories'=> [
         'app',
         'resources',
+        'routes',
         'vendor/laravel/framework/src/Illuminate/Auth/Notifications',
         'vendor/laravel/framework/src/Illuminate/Notifications/resources/views',
     ],

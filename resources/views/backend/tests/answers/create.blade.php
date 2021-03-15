@@ -1,10 +1,10 @@
 <x-layouts.backend title="{{ $title }}">
     <div class="py-6">
         <div class="mx-auto px-4 sm:px-6 md:px-8">
-            <h1 class="text-2xl font-semibold text-gray-900">{{ __('Edit answer') }}</h1>
+            <h1 class="text-2xl font-semibold text-gray-900">{{ __('Create answer') }}</h1>
         </div>
         <div class="mt-3 mx-auto px-4 sm:px-6 md:px-8">
-            <p class="text-xl font-semibold text-gray-900">{{ $question->question_en }}</p>
+            <p class="text-xl font-semibold text-gray-900">{{ $question->question }}</p>
         </div>
         <div class="mt-4 mx-auto px-4 sm:px-6 md:px-8">
             <form
