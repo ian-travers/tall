@@ -1,8 +1,8 @@
-@props(['route'])
+@props(['route', 'active'])
 
 @php
-    /** @var string $route */
-    $classes = Request::routeIs($route) ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900';
+    /** @var string|bool $active */
+    $classes = $active ? 'bg-gray-100 text-gray-900' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900';
 @endphp
 <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
 <a

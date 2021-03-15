@@ -9,7 +9,7 @@ class QuestionsController extends Controller
 {
     public function index()
     {
-        $questions = TestQuestion::paginate(5);
+        $questions = TestQuestion::paginate(20);
         $title = __('Test questions');
 
         return view('backend.tests.questions.index', compact('questions', 'title'));
