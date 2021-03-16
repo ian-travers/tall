@@ -81,6 +81,16 @@ Route::group(['middleware' => 'language'], function () {
         }
     );
 
+    Route::group(
+        [
+            'prefix' => 'server',
+            'as' => 'server.',
+        ],
+        function () {
+            Route::get('monitor', [App\Http\Controllers\NFSUServerControler::class, 'monitor'])->name('monitor');
+        }
+    );
+
     Route::get('/tourneys', function () {
         return view('welcome');
     })->name('tourneys');
