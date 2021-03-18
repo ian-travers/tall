@@ -17,7 +17,7 @@
         "laravel-mix": "^6.0.13",
         "lodash": "^4.17.21",
         "postcss": "^8.2.8",
-        "tailwindcss": "^2.0.3",
+        "tailwindcss": "^2.0.4",
         "world-flags-sprite": "0.0.2"
     }
 }
