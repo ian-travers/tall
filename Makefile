@@ -14,16 +14,13 @@ test-feature:
 	vendor/bin/phpunit --filter=feature
 
 assets-dev:
-	docker-compose exec node npm run dev
+	npm run dev
 
 assets-prod:
-	docker-compose exec node npm run prod
+	npm run prod
 
 assets-watch:
-	docker-compose exec node npm run watch
-
-assets-i-fontawesome:
-	docker-compose exec node npm install --save-dev @fortawesome/fontawesome-free
+	npm run watch
 
 perm:
 	sudo chgrp -R www-data storage bootstrap/cache
