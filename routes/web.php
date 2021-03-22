@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NFSUServerController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => 'language'], function () {
@@ -87,7 +88,8 @@ Route::group(['middleware' => 'language'], function () {
             'as' => 'server.',
         ],
         function () {
-            Route::get('monitor', [App\Http\Controllers\NFSUServerControler::class, 'monitor'])->name('monitor');
+            Route::get('monitor', [NFSUServerController::class, 'monitor'])->name('monitor');
+            Route::get('ratings/{type}', [NFSUServerController::class, 'ratings'])->name('ratings');
         }
     );
 
