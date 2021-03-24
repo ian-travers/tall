@@ -1,6 +1,6 @@
 <x-layouts.app title="{{ $title }}">
     <div class="mt-3 md:mt-4 mx-auto px-4 md:px-8 text-blue-400 max-w-full">
-        <div class="flex items-center justify-between">
+        <div class="text-center sm:flex items-center justify-between">
             {{-- nav --}}
             <nav class="flex space-x-0 sm:space-x-4" aria-label="Tabs">
                 {{-- Current: "bg-blue-100 text-gray-90", Default: "text-blue-300 hover:text-blue-200" --}}
@@ -41,7 +41,9 @@
                 </a>
             </nav>
             {{-- search --}}
-            @livewire('search-nfsu-server-player')
+            <div class="mt-2 sm:mt-0">
+                @livewire('search-nfsu-server-player')
+            </div>
         </div>
         @livewire('search-result')
 
