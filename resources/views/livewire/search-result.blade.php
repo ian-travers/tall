@@ -1,6 +1,7 @@
 <div x-data="{ open: @entangle('isShow') }">
     <div
         x-show.transition="open"
+        x-cloak
         class="my-4 px-4 py-2 border border-gray-100"
     >
         @if(!empty($playerInfo))
@@ -20,12 +21,12 @@
             <table class="border border-blue-400 divide-y divide-blue-200 w-full mb-3">
                 <thead>
                 <tr class="text-center divide-x divide-blue-400">
-                    <th class="text-center"></th>
-                    <th class="text-center">{{ __('Overall') }}</th>
-                    <th class="text-center">{{ __('Circuit') }}</th>
-                    <th class="text-center">{{ __('Sprint') }}</th>
-                    <th class="text-center">{{ __('Drag') }}</th>
-                    <th class="text-center">{{ __('Drift') }}</th>
+                    <th class="text-center w-1/6"></th>
+                    <th class="text-center w-1/6">{{ __('Overall') }}</th>
+                    <th class="text-center w-1/6">{{ __('Circuit') }}</th>
+                    <th class="text-center w-1/6">{{ __('Sprint') }}</th>
+                    <th class="text-center w-1/6">{{ __('Drag') }}</th>
+                    <th class="text-center w-1/6">{{ __('Drift') }}</th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-blue-400">
@@ -79,7 +80,6 @@
                 </tr>
                 </tbody>
             </table>
-
         @endif
     </div>
 </div>

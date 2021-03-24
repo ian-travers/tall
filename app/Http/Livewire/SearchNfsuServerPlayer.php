@@ -26,7 +26,7 @@ class SearchNfsuServerPlayer extends Component
             if (empty($playerInfo = $ratings->playerInfo($this->player))) {
                 session()->flash('status', [
                     'type' => 'warning',
-                    'message' => __('There is no information about :name.', ['name' => $this->player]),
+                    'message' => __('There is no information about ":name".', ['name' => $this->player]),
                 ]);
 
                 return redirect()->route('server.ratings', 'overall');

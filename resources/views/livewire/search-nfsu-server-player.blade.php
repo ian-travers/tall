@@ -9,12 +9,11 @@
             name="player"
             id="player"
             class="focus:ring-blue-200 focus:border-blue-200 block w-full rounded-none rounded-l-md pl-4 sm:text-sm border-blue-400 bg-transparent focus:bg-transparent"
-            placeholder="{{ __('Search...') }}">
+            placeholder="{{ __('Player name...') }}">
         <button
             wire:click="submitForm"
             class="-ml-px relative inline-flex px-4 py-2 border border-blue-400 hover:border-blue-200 text-sm font-medium rounded-r-md bg-transparent focus:outline-none focus:ring-1 focus:ring-blue-200 focus:border-blue-500"
         >
-
             <svg class="flex-shrink-0 h-5 w-5 text-blue-200" viewBox="0 0 20 20" fill="currentColor"
                  aria-hidden="true">
                 <path fill-rule="evenodd"

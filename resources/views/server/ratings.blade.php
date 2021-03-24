@@ -43,7 +43,6 @@
             {{-- search --}}
             @livewire('search-nfsu-server-player')
         </div>
-
         @livewire('search-result')
 
         {{-- Rating table --}}
@@ -52,15 +51,15 @@
             <table class="border border-blue-400 divide-y divide-blue-200 w-full">
                 <thead>
                 <tr class="text-center divide-x divide-blue-400">
-                    <th class="py-2 px-4">{{ __('Rank') }}</th>
+                    <th class="py-2 px-4 w-1/12">{{ __('Rank') }}</th>
                     <th class="py-2 px-4">{{ __('Player') }}</th>
-                    <th class="py-2 px-4">REP</th>
-                    <th class="py-2 px-4">{{ __('Wins') }}</th>
-                    <th class="py-2 px-4">{{ __('Loses') }}</th>
-                    <th class="py-2 px-4">{{ __('Wins %') }}</th>
-                    <th class="py-2 px-4">{{ __('Avg.Opps.Rank') }}</th>
-                    <th class="py-2 px-4">{{ __('Avg.Opps.REP') }}</th>
-                    <th class="py-2 px-4">{{ __('Disconnects') }}</th>
+                    <th class="py-2 px-4 w-1/3 md:w-1/5 xl:w-1/6">REP</th>
+                    <th class="py-2 px-4 hidden sm:table-cell w-1/12">{{ __('Wins') }}</th>
+                    <th class="py-2 px-4 hidden sm:table-cell w-1/12">{{ __('Loses') }}</th>
+                    <th class="py-2 px-4 hidden md:table-cell w-1/12">{{ __('Wins %') }}</th>
+                    <th class="py-2 px-4 hidden xl:table-cell w-1/12">{{ __('Avg.Opps.Rank') }}</th>
+                    <th class="py-2 px-4 hidden xl:table-cell w-1/12">{{ __('Avg.Opps.REP') }}</th>
+                    <th class="py-2 px-4 hidden md:table-cell w-1/12">{{ __('Disconnects') }}</th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-blue-400">
@@ -69,12 +68,12 @@
                         <td class="py-1 px-3 text-center">{{ $loop->index + 1 }}</td>
                         <td class="py-1 px-3">{{ $player['name'] }}</td>
                         <td class="py-1 px-3 text-right">{{ number_format($player['REP'], 0, '', ' ') }}</td>
-                        <td class="py-1 px-3 text-right">{{ number_format($player['wins'], 0, '', ' ') }}</td>
-                        <td class="py-1 px-3 text-right">{{ number_format($player['loses'], 0, '', ' ') }}</td>
-                        <td class="py-1 px-3 text-right">{{ $player['wins_percent'] }}</td>
-                        <td class="py-1 px-3 text-right">{{ number_format($player['avg_opps_rating'], 0, '', ' ') }}</td>
-                        <td class="py-1 px-3 text-right">{{ number_format($player['avg_opps_REP'], 0, '', ' ') }}</td>
-                        <td class="py-1 px-3 text-right">{{ $player['disc_percent'] }}</td>
+                        <td class="py-1 px-3 hidden sm:table-cell text-right">{{ number_format($player['wins'], 0, '', ' ') }}</td>
+                        <td class="py-1 px-3 hidden sm:table-cell text-right">{{ number_format($player['loses'], 0, '', ' ') }}</td>
+                        <td class="py-1 px-3 hidden md:table-cell text-right">{{ $player['wins_percent'] }}</td>
+                        <td class="py-1 px-3 hidden xl:table-cell text-right">{{ number_format($player['avg_opps_rating'], 0, '', ' ') }}</td>
+                        <td class="py-1 px-3 hidden xl:table-cell text-right">{{ number_format($player['avg_opps_REP'], 0, '', ' ') }}</td>
+                        <td class="py-1 px-3 hidden md:table-cell text-right">{{ $player['disc_percent'] }}</td>
                     </tr>
                 @endforeach
                 </tbody>
