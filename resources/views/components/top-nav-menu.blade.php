@@ -24,7 +24,7 @@
                             </x-slot>
                             <x-dropdown-link href="{{ route('server.monitor') }}">{{ __('Monitor') }}</x-dropdown-link>
                             <div class="border-t border-gray-500"></div>
-                            <x-dropdown-link href="#">{{ __('Best Performers') }}</x-dropdown-link>
+                            <x-dropdown-link href="{{ route('server.best-performers', ['circuit', '1001']) }}">{{ __('Best Performers') }}</x-dropdown-link>
                             <x-dropdown-link href="{{ route('server.ratings', 'overall') }}">{{ __('Ratings') }}</x-dropdown-link>
                         </x-dropdown>
                     </div>

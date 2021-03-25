@@ -90,6 +90,7 @@ Route::group(['middleware' => 'language'], function () {
         function () {
             Route::get('monitor', [NFSUServerController::class, 'monitor'])->name('monitor');
             Route::get('ratings/{type}', [NFSUServerController::class, 'ratings'])->name('ratings');
+            Route::get('best-performers/{type}/{track}', [NFSUServerController::class, 'bestPerformers'])->name('best-performers');
         }
     );
 

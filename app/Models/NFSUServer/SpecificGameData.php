@@ -110,21 +110,21 @@ class SpecificGameData
 
     public function tracksCircuit(): array
     {
-        return array_slice($this->tracks, 0, 8);
+        return array_slice($this->tracks, 0, 8, true);
     }
 
     public function tracksSprint(): array
     {
-        return array_slice($this->tracks, 8, 8);
+        return array_slice($this->tracks, 8, 8, true);
     }
 
     public function tracksDrag(): array
     {
-        return array_slice($this->tracks, 16, 6);
+        return array_slice($this->tracks, 16, 6, true);
     }
 
     public function tracksDrift(): array
     {
-        return array_slice($this->tracks, 22);
+        return array_slice($this->tracks, 22, 8, true);
     }
 }

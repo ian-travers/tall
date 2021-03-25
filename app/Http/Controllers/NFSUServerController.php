@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NFSUServer\BestPerformersOnTrack;
 use App\Models\NFSUServer\Ratings;
 use App\Models\NFSUServer\RealServerInfo;
+use App\Models\NFSUServer\SpecificGameData;
 
 class NFSUServerController extends Controller
 {
@@ -50,5 +52,42 @@ class NFSUServerController extends Controller
         $title = __('Ranking') . ' | ' . __($type);
 
         return view('server.ratings', compact('ranking', 'type', 'title',));
+    }
+
+    public function bestPerformers(string $type, string $track)
+    {
+        if (!in_array($type, ['circuit', 'sprint', 'drag', 'drift'])) {
+            return back()->with('status', [
+                'type' => 'error',
+                'message' => __('Invalid track mode.')
+            ]);
+        }
+
+        try {
+            $bp = new BestPerformersOnTrack(config('nfsu-server.path'), $track);
+        } catch (\DomainException $e) {
+            return back()->with('status', [
+                'type' => 'error',
+                'message' => __('Unknown track.')
+            ]);
+        }
+
+        $rating = $bp->rating();
+
+        $sgd = new SpecificGameData();
+        $track = $sgd->findTrack($track);
+
+        $type = ucfirst($type);
+
+        $modes = [
+            'Circuit' => $sgd->tracksCircuit(),
+            'Sprint' => $sgd->tracksSprint(),
+            'Drag' => $sgd->tracksDrag(),
+            'Drift' => $sgd->tracksDrift()
+        ];
+
+        $title = __('Best Performers') . ' | ' . $track;
+
+        return view('server.best-performers', compact('rating', 'modes', 'type', 'track', 'title'));
     }
 }

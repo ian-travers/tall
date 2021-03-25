@@ -81,13 +81,10 @@ class BestPerformersOnTrack
         foreach ($this->rawData as $key => $row) {
             $sortArray[$key] = $row['score'];
         }
-        if (substr($this->trackId, 1, 1) == '3') {
-            // drift
-            array_multisort($sortArray, SORT_DESC, $this->rawData);
-        } else {
-            // circuit, sprint and drag
-            array_multisort($sortArray, SORT_ASC, $this->rawData);
-        }
+
+        $this->isDrift()
+            ? array_multisort($sortArray, SORT_DESC, $this->rawData)
+            : array_multisort($sortArray, SORT_ASC, $this->rawData);
 
         return $this->rawData;
     }
@@ -106,5 +103,10 @@ class BestPerformersOnTrack
         }
 
         return substr($result, 0, strlen($result) - 1);
+    }
+
+    private function isDrift(): bool
+    {
+        return substr($this->trackId, 1, 1) == '3';
     }
 }
